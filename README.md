@@ -83,6 +83,8 @@ Nest is [MIT licensed](LICENSE).
 - https://docs.nestjs.com/recipes/cqrs
 - https://docs.nestjs.com/techniques/configuration
 
+- https://github.com/nestjs/elasticsearch
+
 
 ### Not in this project
 - https://docs.nestjs.com/recipes/sql-typeorm
