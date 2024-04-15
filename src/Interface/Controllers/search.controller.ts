@@ -1,11 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ElasticsearchService } from '../../Domain/Services/elastic.service';
+import { SearchService } from '../../Domain/Services/search.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Elasticsearch')
 @Controller()
 export class ElasticsearchController {
-  constructor(private readonly elasticsearchService: ElasticsearchService) {}
+  constructor(private readonly elasticsearchService: SearchService) {}
 
   @Get()
   @ApiOperation({ summary: 'Search for a item' })
