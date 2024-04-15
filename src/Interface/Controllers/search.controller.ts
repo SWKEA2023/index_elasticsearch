@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { SearchService } from '../../Domain/Services/search.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
@@ -7,7 +7,7 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 export class ElasticsearchController {
   constructor(private readonly elasticsearchService: SearchService) {}
 
-  @Get()
+  @Get(':q')
   @ApiOperation({ summary: 'Search for a item' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @ApiResponse({
@@ -15,7 +15,7 @@ export class ElasticsearchController {
     description: 'The found record',
     type: 'give it a type!',
   })
-  async getHello() {
-    return this.elasticsearchService.getSearch();
+  async getHello(@Param('q') q: string) {
+    return this.elasticsearchService.search(q);
   }
 }

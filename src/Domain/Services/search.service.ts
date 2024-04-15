@@ -14,16 +14,17 @@ export class SearchService {
   async search(q: string) {
     const result = await this.esService.search({
       index: 'movies',
-      body: {
-        query: {
-          match: {
-            title: q,
-          },
-        },
-      },
+      q: q,
+      // body: {
+      //   query: {
+      //     match: {
+      //       title: q,
+      //     },
+      //   },
+      // },
     });
 
-    return result;
+    return result.hits.hits;
   }
 
   async getSearch() {

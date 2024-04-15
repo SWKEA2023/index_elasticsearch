@@ -20,7 +20,7 @@ import * as fs from 'fs';
         apiKey: 'MzRnNTNvNEJGOHVRUnBIdDZaRG86eHBrRkZISVhTQnFnT1dOcUMwaFV4Zw==',
       },
       tls: {
-        ca: fs.readFileSync('http_ca.crt'),
+        ca: fs.readFileSync('files/http_ca.crt'),
         rejectUnauthorized: false,
       },
     }),
