@@ -81,8 +81,7 @@ Nest is [MIT licensed](LICENSE).
 - https://docs.nestjs.com/microservices/basics
 - https://docs.nestjs.com/recipes/cqrs
 - https://docs.nestjs.com/techniques/configuration
-
-- https://github.com/nestjs/elasticsearch
+- https://www.npmjs.com/package/@elastic/elasticsearch
 
 
 ### Not in this project
