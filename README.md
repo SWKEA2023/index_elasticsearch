@@ -77,7 +77,6 @@ Nest is [MIT licensed](LICENSE).
 
 
 ## Tech installations
-- https://docs.nestjs.com/openapi/introduction
 - https://docs.nestjs.com/microservices/rabbitmq
 - https://docs.nestjs.com/microservices/basics
 - https://docs.nestjs.com/recipes/cqrs
@@ -88,3 +87,6 @@ Nest is [MIT licensed](LICENSE).
 
 ### Not in this project
 - https://docs.nestjs.com/recipes/sql-typeorm
+
+## Cloud hosts
+https://www.cloudamqp.com/

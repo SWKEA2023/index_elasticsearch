@@ -1,9 +1,9 @@
 import { NestFactory } from '@nestjs/core';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { INestApplication } from '@nestjs/common';
 import { Transport, MicroserviceOptions } from '@nestjs/microservices';
 import { ConfigService } from '@nestjs/config';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 function setupSwagger(app: INestApplication): void {
   const documentBuilder = new DocumentBuilder()
@@ -27,9 +27,6 @@ async function bootstrap() {
     options: {
       urls: [configService.get('RMQ_URL') as string],
       queue: configService.get('RMQ_QUEUE'),
-      queueOptions: {
-        durable: true,
-      },
     },
   });
 
