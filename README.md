@@ -74,6 +74,16 @@ Nest is [MIT licensed](LICENSE).
 
 
 
+## Docker
+
+### Generate a rabbitmq container
+`` bash
+  docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_VHOST=my_vhost -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=password123 rabbitmq:3-management
+``
+
+- RabbitMQ uri: amqp://admin:password123@0.0.0.0:5672/my_vhost
+- Browser access: http://localhost:15672/
+
 
 
 ## Tech installations
