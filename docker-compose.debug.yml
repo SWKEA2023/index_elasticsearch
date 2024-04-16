@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  indexelasticsearch:
+    image: indexelasticsearch
+    build:
+      context: .
+      dockerfile: ./Dockerfile

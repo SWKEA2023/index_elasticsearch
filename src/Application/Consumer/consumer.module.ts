@@ -17,8 +17,8 @@ import * as fs from 'fs';
       useFactory: async (configService: ConfigService) => ({
         node: 'https://localhost:9200',
         auth: {
-          username: configService.get('ES_USERNAME'),
-          password: configService.get('ES_PASSWORD'),
+          username: configService.get('ELASTIC_USERNAME'),
+          password: configService.get('ELASTIC_PASSWORD'),
         },
         tls: {
           ca: fs.readFileSync('files/http_ca.crt'),

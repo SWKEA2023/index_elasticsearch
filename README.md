@@ -84,6 +84,8 @@ Nest is [MIT licensed](LICENSE).
 - RabbitMQ uri: amqp://admin:password123@0.0.0.0:5672/my_vhost
 - Browser access: http://localhost:15672/
 
+### Compose guide
+https://www.elastic.co/blog/getting-started-with-the-elastic-stack-and-docker-compose
 
 
 ## Tech installations
