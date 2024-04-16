@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { SearchService } from 'src/Domain/Services/search.service';
-import { ElasticsearchController } from 'src/Interface/Controllers/search.controller';
+import { ConsumerService } from '../../consumer/consumer.service';
+import { ConsumerController } from '../../Interface/Controllers/consumer.controller';
 import { CommandHandlers } from './Commands/Handlers';
-import { QueryHandlers } from './Queries/Handlers';
 import { CqrsModule } from '@nestjs/cqrs';
 import { ElasticsearchModule } from '@nestjs/elasticsearch';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -28,7 +27,7 @@ import * as fs from 'fs';
       }),
     }),
   ],
-  providers: [SearchService, ...QueryHandlers, ...CommandHandlers],
-  controllers: [ElasticsearchController],
+  controllers: [ConsumerController],
+  providers: [ConsumerService, ...CommandHandlers],
 })
-export class ElasticModule {}
+export class ConsumerModule {}

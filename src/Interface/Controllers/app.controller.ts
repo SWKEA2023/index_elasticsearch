@@ -6,8 +6,8 @@ import { EventPattern, Payload } from '@nestjs/microservices';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @EventPattern('created_que')
-  handleOrderPlaced(@Payload() data: string) {
+  @EventPattern('create_movies')
+  handleCreateMovies(@Payload() data: any) {
     console.log('data:', data);
 
     return null;

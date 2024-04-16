@@ -3,8 +3,9 @@ import { AppController } from './Interface/Controllers/app.controller';
 import { AppService } from './Domain/Services/app.service';
 import { ConfigModule } from '@nestjs/config';
 import { ElasticModule } from './Application/Search/search.module';
+import { ConsumerModule } from './Application/Consumer/consumer.module';
 @Module({
-  imports: [ConfigModule.forRoot(), ElasticModule],
+  imports: [ConfigModule.forRoot(), ElasticModule, ConsumerModule],
   controllers: [AppController],
   providers: [AppService],
 })
