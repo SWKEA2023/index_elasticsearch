@@ -1,6 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { ConsumerService } from '../../consumer/consumer.service';
+import { ConsumerService } from '../../Domain/Services/consumer.service';
 import { Movie } from 'src/Domain/Entities/Movie.entiry';
 
 @Controller()

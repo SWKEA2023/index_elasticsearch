@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConsumerService } from '../../consumer/consumer.service';
+import { ConsumerService } from '../../Domain/Services/consumer.service';
 import { ConsumerController } from '../../Interface/Controllers/consumer.controller';
 import { CommandHandlers } from './Commands/Handlers';
 import { CqrsModule } from '@nestjs/cqrs';
