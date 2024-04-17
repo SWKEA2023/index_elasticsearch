@@ -2,6 +2,9 @@ version: '3'
 
 services:
   index_api:
+    depends_on:
+      - rabbitmq
+      - es01
     build: .
     ports:
       - "3001:3001"
@@ -15,9 +18,7 @@ services:
       - ELASTIC_INDEX_TARGET=movies
       - ELASTIC_USERNAME=elastic
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
-    depends_on:
-      - rabbitmq
-      - es01
+    
     
   rabbitmq:
     image: rabbitmq:3-management
