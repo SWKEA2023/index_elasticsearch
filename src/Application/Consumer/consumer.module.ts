@@ -15,7 +15,7 @@ import * as fs from 'fs';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        node: 'https://localhost:9200',
+        node: configService.get('ELASTIC_HOST'),
         auth: {
           username: configService.get('ELASTIC_USERNAME'),
           password: configService.get('ELASTIC_PASSWORD'),

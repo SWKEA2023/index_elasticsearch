@@ -1,6 +1,24 @@
 version: '3'
 
 services:
+  index_api:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      - RMQ_URL=amqp://admin:password123@rabbitmq:5672/my_vhost
+      - RABBITMQ_USER=admin
+      - RABBITMQ_PASSWORD=password123
+      - RABBITMQ_VHOST=my_vhost
+      - RMQ_QUEUE=Elastic_QUEUE
+      - ELASTIC_HOST=https://es01:9200
+      - ELASTIC_INDEX_TARGET=movies
+      - ELASTIC_USERNAME=elastic
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+    depends_on:
+      - rabbitmq
+      - es01
+    
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
