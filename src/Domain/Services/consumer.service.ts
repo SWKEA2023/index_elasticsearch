@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 import { CreateMovieCommand } from 'src/Application/Consumer/Commands/Impl/create-movie.command';
-import { Movie } from 'src/Domain/Entities/Movie.entiry';
+import { Movie } from '../Entities/movie.entity';
 
 @Injectable()
 export class ConsumerService {
