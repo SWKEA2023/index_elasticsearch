@@ -22,7 +22,7 @@ import { QueryHandlers } from './Queries/Handlers';
           password: configService.get('ELASTIC_PASSWORD'),
         },
         tls: {
-          ca: fs.readFileSync('files/http_ca.crt'),
+          // ca: fs.readFileSync('files/http_ca.crt'),
           rejectUnauthorized: false,
         },
       }),
