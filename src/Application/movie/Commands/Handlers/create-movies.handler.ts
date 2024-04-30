@@ -12,9 +12,5 @@ export class CreateMoviesHandler {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onDocument: (doc) => ({ index: { _index: 'movies' } }),
     });
-    // const result = await client.helpers.bulk({
-    //   datasource: dataset,
-    //   onDocument: (doc) => ({ index: { _index: 'index_name' } }),
-    // });
   }
 }
