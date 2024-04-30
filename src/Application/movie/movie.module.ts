@@ -4,9 +4,8 @@ import { MovieController } from '../../Interface/Controllers/movie.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
 import { ElasticsearchModule } from '@nestjs/elasticsearch';
-import * as fs from 'fs';
+//import * as fs from 'fs';
 import { CommandHandlers } from './Commands/Handlers';
-import { QueryHandlers } from './Queries/Handlers';
 
 @Module({
   imports: [
@@ -22,13 +21,13 @@ import { QueryHandlers } from './Queries/Handlers';
           password: configService.get('ELASTIC_PASSWORD'),
         },
         tls: {
-          ca: fs.readFileSync('files/http_ca.crt'),
+          //ca: fs.readFileSync('files/http_ca.crt'),
           rejectUnauthorized: false,
         },
       }),
     }),
   ],
   controllers: [MovieController],
-  providers: [MovieService, ...CommandHandlers, ...QueryHandlers],
+  providers: [MovieService, ...CommandHandlers],
 })
 export class MovieModule {}
