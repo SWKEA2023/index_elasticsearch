@@ -1,17 +1,18 @@
 import { CommandHandler } from '@nestjs/cqrs';
-import { CreateMovieCommand } from '../Impl/create-movie.command';
 import { ElasticsearchService } from '@nestjs/elasticsearch';
+import { CreateMovieCommand } from '../Impl/create-movie.command';
 
 @CommandHandler(CreateMovieCommand)
 export class CreateMovieHandler {
   constructor(private readonly esService: ElasticsearchService) {}
 
   async execute(command: CreateMovieCommand): Promise<void> {
-    console.log('command:', command.movie[0]);
-
-    this.esService.index({
+    await this.esService.index({
       index: 'movies',
-      body: command.movie[0],
+      id: command.movie.movieId.toString(),
+      document: {
+        ...command.movie,
+      },
     });
   }
 }

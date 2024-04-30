@@ -1,32 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { Movie } from '../Entities/movie.entity';
-import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { CommandBus } from '@nestjs/cqrs';
 import { CreateMoviesCommand } from 'src/Application/movie/Commands/Impl/create-movies.command';
 import { DeleteMovieCommand } from 'src/Application/movie/Commands/Impl/delete-movie.command';
+import { UpdateMovieCommand } from 'src/Application/movie/Commands/Impl/update-movie.command';
+import { CreateMovieCommand } from 'src/Application/movie/Commands/Impl/create-movie.command';
 
 @Injectable()
 export class MovieService {
-  constructor(
-    private readonly commandBus: CommandBus,
-    private readonly queryBus: QueryBus,
-  ) {}
+  constructor(private readonly commandBus: CommandBus) {}
 
-  createMovies(movies: Movie[]) {
-    this.commandBus.execute(new CreateMoviesCommand(movies));
-    return 'This action adds a new movie list';
+  createMovie(movie: Movie) {
+    return this.commandBus.execute(new CreateMovieCommand(movie));
   }
 
-  // findAll() {
-  //   return `This action returns all movie`;
-  // }
+  createMovies(movies: Movie[]) {
+    return this.commandBus.execute(new CreateMoviesCommand(movies));
+  }
 
-  // findOne(id: number) {
-  //   return `This action returns a #${id} movie`;
-  // }
-
-  // update(id: number, movie: Movie) {
-  //   return `This action updates a #${id} movie`;
-  // }
+  update(movie: Movie) {
+    return this.commandBus.execute(new UpdateMovieCommand(movie));
+  }
 
   deleteMovie(id: number) {
     return this.commandBus.execute(new DeleteMovieCommand(id));

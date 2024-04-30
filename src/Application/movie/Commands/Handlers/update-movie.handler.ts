@@ -1,18 +1,18 @@
 import { CommandHandler } from '@nestjs/cqrs';
-import { DeleteMovieCommand } from '../Impl/delete-movie.command';
 import { ElasticsearchService } from '@nestjs/elasticsearch';
+import { UpdateMovieCommand } from '../Impl/update-movie.command';
 
-@CommandHandler(DeleteMovieCommand)
-export class DeleteMovieHandler {
+@CommandHandler(UpdateMovieCommand)
+export class UpdateMovieHandler {
   constructor(private readonly esService: ElasticsearchService) {}
 
-  async execute(command: DeleteMovieCommand): Promise<void> {
+  async execute(command: UpdateMovieCommand): Promise<void> {
     const movie = await this.esService.search({
       index: 'movies',
       body: {
         query: {
           match: {
-            id: command.id,
+            movieId: command.movie.movieId,
           },
         },
       },
@@ -20,13 +20,16 @@ export class DeleteMovieHandler {
 
     // Feater: Add a logger
     if (0 === movie.hits.hits.length) {
-      console.log('Detele: Movie not found');
+      console.log('Update: Movie not found');
       return;
     }
 
-    this.esService.delete({
+    this.esService.update({
       index: 'movies',
       id: movie.hits.hits[0]._id,
+      body: {
+        doc: command.movie,
+      },
     });
   }
 }

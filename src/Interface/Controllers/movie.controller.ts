@@ -7,23 +7,26 @@ import { Movie } from 'src/Domain/Entities/movie.entity';
 export class MovieController {
   constructor(private readonly movieService: MovieService) {}
 
+  @MessagePattern('movie_created')
+  createMovie(@Payload() movie: Movie) {
+    console.log('movie:', movie);
+    return this.movieService.createMovie(movie);
+  }
+
   @MessagePattern('insert_movies')
   createMovies(@Payload() movies: Movie[]) {
-    console.log('movies:', movies);
-
     return this.movieService.createMovies(movies);
   }
 
-  // @MessagePattern('updateMovie')
-  // update(@Payload() movie: Movie) {
-  //   return this.movieService.update(movie.movieId, movie);
-  // }
+  @MessagePattern('movie_updated')
+  update(@Payload() movie: Movie) {
+    console.log('movie:', movie);
+
+    return this.movieService.update(movie);
+  }
 
   @MessagePattern('movie_deleted')
   remove(@Payload() id: number) {
-    console.log('id:', id);
-
-    // Admin api needs to send the id of the movie to be deleted
-    // return this.movieService.deleteMovie(1);
+    return this.movieService.deleteMovie(id);
   }
 }
