@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Movie } from '../Entities/movie.entity';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateMoviesCommand } from 'src/Application/movie/Commands/Impl/create-movies.command';
+import { DeleteMovieCommand } from 'src/Application/movie/Commands/Impl/delete-movie.command';
 
 @Injectable()
 export class MovieService {
@@ -27,7 +28,7 @@ export class MovieService {
   //   return `This action updates a #${id} movie`;
   // }
 
-  // remove(id: number) {
-  //   return `This action removes a #${id} movie`;
-  // }
+  deleteMovie(id: number) {
+    return this.commandBus.execute(new DeleteMovieCommand(id));
+  }
 }
