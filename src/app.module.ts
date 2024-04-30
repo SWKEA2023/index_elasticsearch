@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { ConsumerModule } from './Application/Consumer/consumer.module';
+import { MovieModule } from './Application/movie/movie.module';
+import { CinemaModule } from './Application/cinema/cinema.module';
 @Module({
-  imports: [ConfigModule.forRoot(), ConsumerModule],
+  imports: [ConfigModule.forRoot(), MovieModule, CinemaModule],
   controllers: [],
   providers: [],
 })

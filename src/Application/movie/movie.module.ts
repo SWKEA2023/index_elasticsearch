@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { ConsumerService } from '../../Domain/Services/consumer.service';
-import { ConsumerController } from '../../Interface/Controllers/consumer.controller';
-import { CommandHandlers } from './Commands/Handlers';
+import { MovieService } from '../../Domain/Services/movie.service';
+import { MovieController } from '../../Interface/Controllers/movie.controller';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
 import { ElasticsearchModule } from '@nestjs/elasticsearch';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as fs from 'fs';
+import { CommandHandlers } from './Commands/Handlers';
+import { QueryHandlers } from './Queries/Handlers';
 
 @Module({
   imports: [
@@ -27,7 +28,7 @@ import * as fs from 'fs';
       }),
     }),
   ],
-  controllers: [ConsumerController],
-  providers: [ConsumerService, ...CommandHandlers],
+  controllers: [MovieController],
+  providers: [MovieService, ...CommandHandlers, ...QueryHandlers],
 })
-export class ConsumerModule {}
+export class MovieModule {}
