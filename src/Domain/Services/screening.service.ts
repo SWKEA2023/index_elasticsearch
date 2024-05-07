@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { Screening } from '../Entities/screening.entity';
 import { CommandBus } from '@nestjs/cqrs';
 import { CreateScreeningsCommand } from 'src/Application/cinema/Commands/Impl/create-screenings.command';
+import { CreateScreeningCommand } from 'src/Application/cinema/Commands/Impl/create-screening.command';
+import { UpdateScreeningCommand } from 'src/Application/cinema/Commands/Impl/update-screening.command';
+import { DeleteScreeningCommand } from 'src/Application/cinema/Commands/Impl/delete-screening.command';
 
 @Injectable()
 export class ScreeningService {
@@ -12,15 +15,14 @@ export class ScreeningService {
   }
 
   create(screening: Screening) {
-    screening;
-    return 'This action adds a new screening';
+    return this.commandBus.execute(new CreateScreeningCommand(screening));
   }
 
   update(screening: Screening) {
-    return `This action updates a #${screening} screening`;
+    return this.commandBus.execute(new UpdateScreeningCommand(screening));
   }
 
   delete(id: number) {
-    return `This action removes a #${id} screening`;
+    return this.commandBus.execute(new DeleteScreeningCommand(id));
   }
 }

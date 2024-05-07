@@ -12,15 +12,15 @@ export class UpdateScreeningHandler {
       body: {
         query: {
           match: {
-            movieId: command.screening.screeningId,
+            screeningId: command.screening.screeningId,
           },
         },
       },
     });
 
-    // Feater: Add a logger
+    // Feature: Add a logger
     if (0 === screening.hits.hits.length) {
-      console.log('Update: Movie not found');
+      console.log('Update: Screening not found');
       return;
     }
 
