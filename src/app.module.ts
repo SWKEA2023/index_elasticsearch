@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MovieModule } from './Application/movie/movie.module';
-import { CinemaModule } from './Application/cinema/cinema.module';
+import { ScreeningModule } from './Application/cinema/screening.module';
 @Module({
-  imports: [ConfigModule.forRoot(), MovieModule, CinemaModule],
+  imports: [ConfigModule.forRoot(), MovieModule, ScreeningModule],
   controllers: [],
   providers: [],
 })
